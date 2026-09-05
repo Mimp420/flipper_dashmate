@@ -1,0 +1,37 @@
+name: Build DashMate
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout DashMate
+        uses: actions/checkout@v4
+
+      - name: Clone Flipper Zero firmware
+        run: |
+          git clone --depth 1 https://github.com/flipperdevices/flipperzero-firmware.git firmware
+
+      - name: Copy DashMate into applications_user
+        run: |
+          mkdir -p firmware/applications_user/dashmate
+          cp application.fam firmware/applications_user/dashmate/
+          cp dashmate.c firmware/applications_user/dashmate/
+
+      - name: Build DashMate
+        working-directory: firmware
+        run: |
+          ./fbt fap_dashmate
+
+      - name: Upload DashMate FAP
+        uses: actions/upload-artifact@v4
+        with:
+          name: DashMate-FAP
+          path: firmware/build/f7-firmware-D/.extapps/*.fap
