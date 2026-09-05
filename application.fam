@@ -1,0 +1,8 @@
+App(
+    appid="dashmate",
+    name="DashMate",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="dashmate_app",
+    stack_size=2 * 1024,
+    fap_category="Tools",
+)
