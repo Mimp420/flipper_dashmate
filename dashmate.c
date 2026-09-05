@@ -19,7 +19,7 @@ enum DashMateMenuItem {
 };
 
 static void dashmate_menu_callback(void* context, uint32_t index) {
-    DashMateApp* app = context;
+    UNUSED(context);
 
     switch(index) {
     case DashMateMenuStartShift:
@@ -61,7 +61,6 @@ int32_t dashmate_app(void* p) {
     app->gui = furi_record_open(RECORD_GUI);
 
     app->view_dispatcher = view_dispatcher_alloc();
-    view_dispatcher_enable_queue(app->view_dispatcher);
 
     app->submenu = submenu_alloc();
 
