@@ -15,9 +15,9 @@ jobs:
       - name: Checkout DashMate
         uses: actions/checkout@v4
 
-      - name: Clone Flipper Zero firmware
+      - name: Clone official Flipper firmware 1.4.3
         run: |
-          git clone --depth 1 https://github.com/flipperdevices/flipperzero-firmware.git firmware
+          git clone --depth 1 --branch 1.4.3 https://github.com/flipperdevices/flipperzero-firmware.git firmware
 
       - name: Copy DashMate into applications_user
         run: |
