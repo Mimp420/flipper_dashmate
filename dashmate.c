@@ -15,7 +15,7 @@
 #define PAY_MAX_CENTS 5000
 #define MILES_MIN_TENTHS 1
 #define MILES_STEP_TENTHS 1
-#define MILES_MAX_TENTHS 500
+#define MILES_MAX_TENTHS 250
 
 typedef struct {
     Gui* gui;
